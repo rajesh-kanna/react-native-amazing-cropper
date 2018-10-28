@@ -9,19 +9,20 @@ import {
 import PropTypes from 'prop-types';
 import styles from './Cropper.component.style';
 import { SCREEN_HEIGHT, W, Q } from './Cropper.constants';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class Cropper extends Component {
   render() {
     return (
       <View style={styles.container}>
+        
         <View style={styles.secondContainer}>
           <Image
             style={this.props.getImageStyle()}
             source={{ uri: this.props.imageUri }}
           />
         </View>
-
-        <View style={[styles.buttonsContainer, { top: SCREEN_HEIGHT - Q, bottom: 0, width: W }]}>
+        {/* <View style={[styles.buttonsContainer, { top: SCREEN_HEIGHT - Q, bottom: 0, width: W }]}>
           <TouchableOpacity onPress={this.props.onCancel} style={styles.touchable}>
             <Text style={styles.text}>{this.props.cancelText}</Text>
           </TouchableOpacity>
@@ -31,8 +32,48 @@ class Cropper extends Component {
           <TouchableOpacity onPress={this.props.done} style={styles.touchable}>
             <Text style={styles.text}>{this.props.doneText}</Text>
           </TouchableOpacity>
+        </View> */}
+        <View style={styles.zoomNavBar}>
+          <View style={styles.rightNav}>
+            <TouchableOpacity style={styles.icon} onPress={this.props.done}>
+              <View style={{
+                width: 26, margin: 2,
+                height: 26,
+                borderRadius: 26 / 2,
+                backgroundColor: '#ffffff'
+              }}>
+                <FontAwesome name='mobile-phone' size={16} color='#5a2480' style={{ lineHeight: 26, textAlign: 'center' }} />
+              </View>
+              <Text style={{ paddingLeft: 3, fontSize: 16, color: '#ffffff', lineHeight: 26 }}>Set Wallpaper</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.rightNav}>
+            <TouchableOpacity style={styles.icon} onPress={this.props.rotate}>
+              <View style={{
+                width: 26, margin: 2,
+                height: 26,
+                borderRadius: 26 / 2,
+                backgroundColor: '#ffffff'
+              }}>
+                <FontAwesome name='rotate-right' size={16} color='#5a2480' style={{ lineHeight: 26, textAlign: 'center' }} />
+              </View>
+              <Text style={{ paddingLeft: 3, fontSize: 16, color: '#ffffff', lineHeight: 26 }}>Rotate</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.rightNav}>
+            <TouchableOpacity style={styles.icon} onPress={this.props.onCancel}>
+              <View style={{
+                width: 26, margin: 2,
+                height: 26,
+                borderRadius: 26 / 2,
+                backgroundColor: '#ffffff'
+              }}>
+                <FontAwesome name='close' size={16} color='#5a2480' style={{ lineHeight: 26, textAlign: 'center' }} />
+              </View>
+              <Text style={{ paddingLeft: 3, fontSize: 16, color: '#ffffff', lineHeight: 26 }}>Close</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
         <Animated.View
           ref={this.props.topOuterRef}
           style={[styles.animation, this.props.getTopOuterStyle()]}

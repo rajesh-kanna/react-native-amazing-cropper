@@ -100,5 +100,26 @@ export default StyleSheet.create({
     width: 30,
     height: 30,
     borderColor: 'white'
-  }
+  },
+  icon: {
+    paddingRight: 10,
+    flexDirection: 'row',
+  },
+  zoomNavBar: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#5a2480',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    bottom: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingHorizontal: 20
+  },
+  rightNav: {
+    flexDirection: 'row',
+  },
 });
